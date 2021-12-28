@@ -25,10 +25,12 @@ test('after inserting values 1,2,3, the tail of the linked list should be the fi
     expect(actual).toBe(expected);
 });
 
-// test('ecxpect show command to throw inputerror if no linked list', ()=>{
-//     ll = new LinkedList();
-//     expect(ll.show().toThrow('This is an empty list'));
-// });
+test('.show should let user know when asked to show empty list', ()=>{
+    ll = new LinkedList();
+    let actual = ll.show();
+    let expected = 'This is an empty list';
+    expect(actual).toBe(expected);
+});
 
 test('should print pretty linked list "{1} -> {2} -> {3} -> null" ', ()=>{
     const ll = new LinkedList();

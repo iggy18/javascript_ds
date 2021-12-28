@@ -34,7 +34,7 @@ class LinkedList {
 
     show(){
         if(!this.head){
-            throw new InputError('This is an empty list');
+            return `This is an empty list`;
         }
         let currentNode = this.head;
         let valueArr = [];
