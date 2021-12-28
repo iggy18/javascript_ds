@@ -1,11 +1,27 @@
 const Node = require('../sinlgeNodeDS/singleNode');
 
-class LinkedList {
-    constructor(){
-        this.head = null;
+class InputError extends Error {
+
+
+    constructor(message) {
+        super(message);
+        this.name = "InputError";
     }
+
+
+}
+
+
+class LinkedList {
+
+
+    constructor(head=null){
+        this.head = head;
+    }
+
+
     insert(value){
-        if(this.head === null){
+        if(!this.head){
             this.head = new Node(value);
             return;
         } else {
@@ -14,17 +30,39 @@ class LinkedList {
             this.head.next = previousHead;
         }
     }
+
+
     show(){
+        if(!this.head){
+            throw new InputError('This is an empty list');
+        }
         let currentNode = this.head;
         let valueArr = [];
         while(currentNode !== null){
             valueArr.push('{'+ currentNode.value +'} ->');
             currentNode = currentNode.next;
         }
-        let stringify = valueArr.join(' ').toString()
+        let stringList = valueArr.join(' ').toString()
         
-        return `${stringify} null`;
+        return `${stringList} null`;
     }
+
+
+    addToEnd(value){
+        if(this.head === null){
+            this.head = new Node(value);
+            return;
+        }
+
+        let currentNode = this.head;
+        
+        while(currentNode.next !== null){
+            currentNode = currentNode.next;
+        }
+        currentNode.next = new Node(value);
+    }
+
+
 }
 
 
